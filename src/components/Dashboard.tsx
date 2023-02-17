@@ -18,19 +18,27 @@ export default function Dashboard() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsGenerating(true);
-    const res = await fetch("/api/jobRecommend", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prevCareer,
-        careerType,
-      }),
-    });
-    setIsGenerating(false);
-    const data = await res.json();
-    setJobDescription(data.jobDescription.trim());
+    try {
+      const res = await fetch("/api/jobRecommend", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prevCareer,
+          careerType,
+        }),
+      });
+      setIsGenerating(false);
+      const data = await res.json();
+      if (data.jobDescription) {
+        setJobDescription(data.jobDescription.trim());
+      } else {
+        alert("다시 시도해주세요");
+      }
+    } catch (err) {
+      throw err;
+    }
   };
 
   return (
@@ -81,7 +89,7 @@ export default function Dashboard() {
               type="submit"
               disabled={isGenerating || prevCareer === ""}
             >
-              {isGenerating ? "Generating..." : "Generate Job Description"}
+              {isGenerating ? "추천중..." : "직무 추천 받기"}
             </button>
           </form>
         </div>
@@ -101,7 +109,7 @@ export default function Dashboard() {
               onChange={(e) => setJobDescription(e.target.value)}
               disabled={jobDescription === ""}
               id="output"
-              placeholder="AI 추천하는 직무 3가지가 나옵니다."
+              placeholder="AI가 경력을 분석하여, 추천하는 직무 3가지가 상세한 이유와 함께 나옵니다."
               className="block w-full rounded-md bg-white border border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
             />
             <button
@@ -110,7 +118,7 @@ export default function Dashboard() {
               type="submit"
               disabled={jobDescription === ""}
             >
-              {isCopied ? "Copied" : "Copy to Clipboard"}
+              {isCopied ? "복사되었습니다" : "복사하기"}
             </button>
           </div>
         </div>

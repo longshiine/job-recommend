@@ -1,4 +1,4 @@
-const generateDescription = async ({
+const generateRecommendation = async ({
   prevCareer,
   careerType,
 }: {
@@ -26,21 +26,28 @@ const generateDescription = async ({
       }
     );
     const data = await response.json();
+    console.log(data);
     return data.choices[0].text;
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };
 
 export default async function handler(req: any, res: any) {
   const { prevCareer, careerType } = req.body;
 
-  const jobDescription = await generateDescription({
-    prevCareer,
-    careerType,
-  });
-
-  res.status(200).json({
-    jobDescription,
-  });
+  try {
+    const jobRecommendation = await generateRecommendation({
+      prevCareer,
+      careerType,
+    });
+    res.status(200).json({
+      jobRecommendation,
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: err,
+    });
+  }
 }
