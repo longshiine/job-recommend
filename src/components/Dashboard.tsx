@@ -3,11 +3,8 @@ import React, { useState } from "react";
 export default function Dashboard() {
   const [jobDescription, setJobDescription] = useState("");
 
-  const [jobTitle, setJobTitle] = useState("");
-  const [industry, setIndustry] = useState("");
-  const [keyWords, setKeyWords] = useState("");
-  const [tone, setTone] = useState("");
-  const [numWords, setNumWords] = useState("");
+  const [prevCareer, setPrevCareer] = useState("");
+  const [careerType, setCareerType] = useState("");
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
@@ -21,17 +18,14 @@ export default function Dashboard() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsGenerating(true);
-    const res = await fetch("/api/returnJobDescription", {
+    const res = await fetch("/api/jobRecommend", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        jobTitle,
-        industry,
-        keyWords,
-        tone,
-        numWords,
+        prevCareer,
+        careerType,
       }),
     });
     setIsGenerating(false);
@@ -50,41 +44,42 @@ export default function Dashboard() {
               </label>
               <textarea
                 rows={7}
-                value={keyWords}
-                onChange={(e) => setKeyWords(e.target.value)}
-                name="keyWords"
-                id="keyWords"
+                value={prevCareer}
+                onChange={(e) => {
+                  setPrevCareer(e.target.value);
+                }}
+                name="prevCareer"
+                id="prevCareer"
                 placeholder="이전 경력사항을 입력해주세요"
                 className="block w-full rounded-md bg-white border border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
               />
             </div>
             <div className="flex flex-col">
-              <label className="sr-only" htmlFor="tone">
+              <label className="sr-only" htmlFor="careerType">
                 선호하는 직무의 형태를 입력해주세요
               </label>
-
               <select
-                value={tone}
-                onChange={(e) => setTone(e.target.value)}
+                value={careerType}
+                onChange={(e) => setCareerType(e.target.value)}
                 className="block w-full rounded-md bg-white border border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
-                name="tone"
-                id="tone"
+                name="careerType"
+                id="careerType"
               >
-                <option value="">선호 직무 형태</option>
-                <option value="casual">연봉이 높은</option>
-                <option value="friendly">워라밸이 좋은</option>
-                <option value="professional">단순 작업이 많은</option>
+                <option value="">선호 직무 형태 (optional)</option>
+                <option value="연봉이 높은">연봉이 높은</option>
+                <option value="워라밸이 좋은">워라밸이 좋은</option>
+                <option value="단순 작업이 많은">단순 작업이 많은</option>
               </select>
             </div>
             <button
               className={`bg-blue-600 w-full hover:bg-blue-700 text-white font-bold mt-6 py-2 px-4 rounded
                 ${
-                  isGenerating || jobTitle === ""
+                  isGenerating || prevCareer === ""
                     ? "cursor-not-allowed opacity-50"
                     : ""
                 }`}
               type="submit"
-              disabled={isGenerating || jobTitle === ""}
+              disabled={isGenerating || prevCareer === ""}
             >
               {isGenerating ? "Generating..." : "Generate Job Description"}
             </button>
@@ -106,7 +101,7 @@ export default function Dashboard() {
               onChange={(e) => setJobDescription(e.target.value)}
               disabled={jobDescription === ""}
               id="output"
-              placeholder="AI Generated Job Description"
+              placeholder="AI 추천하는 직무 3가지가 나옵니다."
               className="block w-full rounded-md bg-white border border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
             />
             <button
