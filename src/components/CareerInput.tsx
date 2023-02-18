@@ -1,24 +1,23 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
-export default function Dashboard() {
-  const [jobRecommendation, setJobRecommendation] = useState("");
+export default function CareerInput() {
+  const router = useRouter();
 
   const [prevCareer, setPrevCareer] = useState("");
   const [careerType, setCareerType] = useState("");
   const [workType, setWorkType] = useState("");
 
   const [isGenerating, setIsGenerating] = useState(false);
-  const [isCopied, setIsCopied] = useState(false);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(jobRecommendation);
-    setIsCopied(true);
-    alert("Copied to clipboard!");
-  };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsGenerating(true);
+    if (prevCareer === "" || careerType === "" || workType === "") {
+      alert("모든 항목을 입력해주세요.");
+      setIsGenerating(false);
+      return;
+    }
     try {
       const res = await fetch("/api/jobRecommend", {
         method: "POST",
@@ -28,14 +27,23 @@ export default function Dashboard() {
         body: JSON.stringify({
           prevCareer,
           careerType,
+          workType,
         }),
       });
       setIsGenerating(false);
       const data = await res.json();
       if (data.jobRecommendation) {
-        setJobRecommendation(data.jobRecommendation.trim());
+        const jobRecommendation = data.jobRecommendation.trim().split("\n");
+        router.push({
+          pathname: "/results",
+          query: {
+            job1: String(jobRecommendation[0]),
+            job2: String(jobRecommendation[2]),
+            job3: String(jobRecommendation[4]),
+          },
+        });
       } else {
-        alert("다시 시도해주세요");
+        alert("접속량이 많습니다. 잠시 뒤 다시 시도해주세요.");
       }
     } catch (err) {
       throw err;
@@ -43,7 +51,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="max-w-sm w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 md:max-w-2xl">
+    <div className="max-w-sm w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 md:max-w-2xl ">
       <div className="grid gap-y-12">
         <div className="">
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -59,7 +67,7 @@ export default function Dashboard() {
                 }}
                 name="prevCareer"
                 id="prevCareer"
-                placeholder="ex) 이전 경력사항을 입력해주세요"
+                placeholder="ex) 경리 일을 했다 or 인사담당자 업무를 20년 동안 했다"
                 className="block w-full rounded-md bg-white border border-gray-400 shadow-sm focus:border-sky-400 focus:ring-sky-400 sm:text-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
               />
             </div>
@@ -74,7 +82,7 @@ export default function Dashboard() {
                 name="careerType"
                 id="careerType"
               >
-                <option value="">선호 직무 형태 (optional)</option>
+                <option value="">선호 직무 형태를 선택해주세요</option>
                 <option value="연봉이 높은">연봉이 높은</option>
                 <option value="워라밸이 좋은">워라밸이 좋은</option>
                 <option value="단순 작업이 많은">단순 작업이 많은</option>
@@ -91,54 +99,49 @@ export default function Dashboard() {
                 name="workType"
                 id="workType"
               >
-                <option value="">선호 근무 형태 (optional)</option>
+                <option value="">선호 근무 형태를 선택해주세요</option>
                 <option value="풀타임">풀타임</option>
                 <option value="파트타임">파트타임</option>
               </select>
             </div>
-            <button
-              className={`bg-sky-400 w-full hover:bg-sky-500 text-white font-bold mt-6 py-2 px-4 rounded
+            {isGenerating ? (
+              <div role="status" className="mt-10 flex justify-center">
+                <svg
+                  aria-hidden="true"
+                  className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-sky-400"
+                  viewBox="0 0 100 101"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                    fill="currentFill"
+                  />
+                </svg>
+                <span className="flex text-sm text-gray-400 items-center justify-center">
+                  최대 1분 정도 소요됩니다.
+                </span>
+              </div>
+            ) : (
+              <button
+                className={`bg-sky-400 w-full hover:bg-sky-500 text-white font-bold mt-6 py-2 px-4 rounded
                 ${
                   isGenerating || prevCareer === ""
                     ? "cursor-not-allowed opacity-50"
                     : ""
                 }`}
-              type="submit"
-              disabled={isGenerating || prevCareer === ""}
-            >
-              {isGenerating ? "추천중..." : "직무 추천 받기"}
-            </button>
+                type="submit"
+                disabled={isGenerating || prevCareer === ""}
+              >
+                {isGenerating ? "추천중..." : "직무 추천 받기"}
+              </button>
+            )}
           </form>
         </div>
-        {/* <div className="">
-          <div className="flex flex-col">
-            <label htmlFor="output" className="sr-only">
-              Output
-            </label>
-            <textarea
-              rows={
-                jobRecommendation === ""
-                  ? 7
-                  : jobRecommendation.split("\n").length + 12
-              }
-              name="output"
-              value={jobRecommendation}
-              onChange={(e) => setJobRecommendation(e.target.value)}
-              disabled={jobRecommendation === ""}
-              id="output"
-              placeholder="AI가 경력을 분석하여, 추천하는 직무 3가지가 상세한 이유와 함께 나옵니다."
-              className="block w-full rounded-md bg-white border border-gray-400 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
-            />
-            <button
-              onClick={handleCopy}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              type="submit"
-              disabled={jobRecommendation === ""}
-            >
-              {isCopied ? "복사되었습니다" : "복사하기"}
-            </button>
-          </div>
-        </div> */}
       </div>
     </div>
   );
