@@ -1,9 +1,11 @@
 const generateRecommendation = async ({
   prevCareer,
   careerType,
+  workType,
 }: {
   prevCareer: string;
   careerType?: string;
+  workType?: string;
 }) => {
   try {
     const response = await fetch(
@@ -19,14 +21,14 @@ const generateRecommendation = async ({
 
           - 50대, 60대에게 적합한 직무를 찾고 있어.
           - 이전에는 ${prevCareer}. 이전의 경력이 도움이 되는 직무를 찾고 있어.
-          - ${careerType} 직무를 찾고 있어.`,
-          max_tokens: 300,
-          temperature: 0.5,
+          - ${careerType} 직무를 찾고 있어.
+          - ${workType} 직무를 찾고 있어.`,
+          max_tokens: 1000,
+          temperature: 0.6,
         }),
       }
     );
     const data = await response.json();
-    console.log(data);
     return data.choices[0].text;
   } catch (err) {
     console.error(err);

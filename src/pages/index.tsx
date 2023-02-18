@@ -11,17 +11,19 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex flex-col items-center justify-start min-h-screen py-2">
+      <main className="flex flex-col items-center justify-center min-h-screen py-2">
         <div className="flex flex-col items-center justify-center px-4 py-2">
           <h1 className="text-4xl md:text-6xl font-bold">
-            AI 직무 추천 (Beta)
-            <span className="text-4xl md:text-6xl font-bold text-blue-600">
+            시어, AI 직무 추천 (Beta)
+            <span className="text-4xl md:text-6xl font-bold text-sky-400">
               .
             </span>
           </h1>
-          <p className="mt-5 text-2xl">기존 경력을 입력하면 재취업에 적합한</p>
-          <p className="text-2xl">
-            <span className="text-2xl font-bold text-blue-600">
+          <p className="mt-5 text-lg md:text-2xl">
+            기존 경력을 입력하면 재취업에 적합한
+          </p>
+          <p className="text-lg md:text-2xl">
+            <span className="text-lg md:text-2xl font-bold text-sky-400">
               {" "}
               직무 3가지를{" "}
             </span>
