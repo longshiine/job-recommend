@@ -55,12 +55,17 @@ export default function CareerInput() {
       <div className="grid gap-y-12">
         <div className="">
           <form onSubmit={(e) => handleSubmit(e)}>
-            <div className="flex flex-col">
-              <div className="rounded-lg overflow-hidden shadow-md ">
+            <div className="flex flex-col relative mt-10">
+              <div className="text-lg mb-3 absolute -top-5">
+                <span className="bg-seer font-bold text-white px-4 py-2.5 rounded-full">
+                  1
+                </span>
+                <span className="bg-seer text-white font-semibold px-3 py-1.5 rounded-r-lg -ml-2">
+                  이전 경력을 입력해주세요.
+                </span>
+              </div>
+              <div className="rounded-lg overflow-hidden shadow-md border border-seer ml-3">
                 <div className="px-6 py-4">
-                  <div className="font-bold text-lg md:text-xl mb-3">
-                    1. 이전 경력을 입력해주세요
-                  </div>
                   <textarea
                     rows={7}
                     disabled={isGenerating}
@@ -71,29 +76,34 @@ export default function CareerInput() {
                     name="prevCareer"
                     id="prevCareer"
                     placeholder="이전 경력 사항을 자유롭게 입력해주세요"
-                    className="block w-full rounded-md border border-gray-200 shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
+                    className="block w-full rounded-md mt-3 border border-gray shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
                   />
                 </div>
                 <div className="px-6 pb-2 mb-2">
-                  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                  <span className="inline-block bg-gray rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
                     ex1) 경리 일을 했다
                   </span>
-                  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                  <span className="inline-block bg-gray rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
                     ex2) 인사담당자 업무를 20년 동안 했다
                   </span>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col">
-              <div className="rounded-lg overflow-hidden shadow-md mt-10">
+            <div className="flex flex-col mt-20 relative">
+              <div className="text-lg mb-3 absolute -top-5">
+                <span className="bg-seer font-bold text-white px-4 py-2.5 rounded-full">
+                  2
+                </span>
+                <span className="bg-seer text-white font-semibold px-3 py-1.5 rounded-r-lg -ml-2">
+                  선호하는 직무 형태를 입력해주세요.
+                </span>
+              </div>
+              <div className="rounded-lg overflow-hidden shadow-md border border-seer ml-3">
                 <div className="px-6 py-4">
-                  <div className="font-bold text-lg md:text-xl mb-3">
-                    2. 선호하는 직무 형태를 입력해주세요.
-                  </div>
                   <select
                     value={careerType}
                     onChange={(e) => setCareerType(e.target.value)}
-                    className="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
+                    className="block w-full rounded-md border border-gray shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
                     name="careerType"
                     id="careerType"
                     disabled={isGenerating}
@@ -106,8 +116,34 @@ export default function CareerInput() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col">
-              <div className="rounded-lg overflow-hidden shadow-md mt-10">
+            <div className="flex flex-col mt-20 relative">
+              <div className="text-lg mb-3 absolute -top-5">
+                <span className="bg-seer font-bold text-white px-4 py-2.5 rounded-full">
+                  3
+                </span>
+                <span className="bg-seer text-white font-semibold px-3 py-1.5 rounded-r-lg -ml-2">
+                  선호하는 근무 형태를 입력해주세요
+                </span>
+              </div>
+              <div className="rounded-lg overflow-hidden shadow-md border border-seer ml-3">
+                <div className="px-6 py-4">
+                  <select
+                    value={workType}
+                    onChange={(e) => setWorkType(e.target.value)}
+                    className="block w-full rounded-md border border-gray shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-90"
+                    name="workType"
+                    id="workType"
+                    disabled={isGenerating}
+                  >
+                    <option value="">선호 근무 형태를 선택해주세요</option>
+                    <option value="풀타임">풀타임</option>
+                    <option value="파트타임">파트타임</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            {/* <div className="flex flex-col">
+              <div className="rounded-lg overflow-hidden shadow-md border border-seer mt-10">
                 <div className="px-6 py-4">
                   <div className="font-bold text-lg md:text-xl mb-3">
                     3. 선호하는 근무 형태를 입력해주세요
@@ -126,7 +162,7 @@ export default function CareerInput() {
                   </select>
                 </div>
               </div>
-            </div>
+            </div> */}
             {isGenerating ? (
               <div role="status" className="mt-10 flex justify-center">
                 <svg
@@ -150,18 +186,20 @@ export default function CareerInput() {
                 </span>
               </div>
             ) : (
-              <button
-                className={`bg-sky-400 w-full hover:bg-sky-500 text-white font-bold mt-10 py-2 px-4 rounded
+              <div className="flex justify-center w-full">
+                <button
+                  className={`bg-seer w-xl hover:bg-sky-500 text-white font-bold mt-10 py-2 px-4 rounded
                 ${
                   isGenerating || prevCareer === ""
                     ? "cursor-not-allowed opacity-50"
                     : ""
                 }`}
-                type="submit"
-                disabled={isGenerating || prevCareer === ""}
-              >
-                {isGenerating ? "추천중..." : "직무 추천 받기"}
-              </button>
+                  type="submit"
+                  disabled={isGenerating || prevCareer === ""}
+                >
+                  {isGenerating ? "추천중..." : "직무 추천 받기"}
+                </button>
+              </div>
             )}
           </form>
         </div>
