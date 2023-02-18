@@ -29,6 +29,9 @@ const generateRecommendation = async ({
       }
     );
     const data = await response.json();
+    if (response.status !== 200) {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
     if (data) {
       return data.choices[0].text;
     } else {

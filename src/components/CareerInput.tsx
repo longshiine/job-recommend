@@ -63,6 +63,7 @@ export default function CareerInput() {
                   </div>
                   <textarea
                     rows={7}
+                    disabled={isGenerating}
                     value={prevCareer}
                     onChange={(e) => {
                       setPrevCareer(e.target.value);
@@ -95,6 +96,7 @@ export default function CareerInput() {
                     className="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
                     name="careerType"
                     id="careerType"
+                    disabled={isGenerating}
                   >
                     <option value="">선호 직무 형태를 선택해주세요</option>
                     <option value="연봉이 높은">연봉이 높은</option>
@@ -116,6 +118,7 @@ export default function CareerInput() {
                     className="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-90"
                     name="workType"
                     id="workType"
+                    disabled={isGenerating}
                   >
                     <option value="">선호 근무 형태를 선택해주세요</option>
                     <option value="풀타임">풀타임</option>
