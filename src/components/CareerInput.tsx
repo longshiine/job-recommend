@@ -75,7 +75,7 @@ export default function CareerInput() {
                     }}
                     name="prevCareer"
                     id="prevCareer"
-                    placeholder="이전 경력 사항을 자유롭게 입력해주세요"
+                    placeholder="경력 사항을 자유롭게 입력해주세요"
                     className="block w-full rounded-md mt-3 border border-gray shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
                   />
                 </div>
@@ -103,7 +103,7 @@ export default function CareerInput() {
                   <select
                     value={careerType}
                     onChange={(e) => setCareerType(e.target.value)}
-                    className="block w-full rounded-md border border-gray shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
+                    className="block w-full rounded-md border bg-white border-gray shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
                     name="careerType"
                     id="careerType"
                     disabled={isGenerating}
@@ -130,7 +130,7 @@ export default function CareerInput() {
                   <select
                     value={workType}
                     onChange={(e) => setWorkType(e.target.value)}
-                    className="block w-full rounded-md border border-gray shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-90"
+                    className="block w-full rounded-md border bg-white border-gray shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-90"
                     name="workType"
                     id="workType"
                     disabled={isGenerating}
@@ -142,27 +142,6 @@ export default function CareerInput() {
                 </div>
               </div>
             </div>
-            {/* <div className="flex flex-col">
-              <div className="rounded-lg overflow-hidden shadow-md border border-seer mt-10">
-                <div className="px-6 py-4">
-                  <div className="font-bold text-lg md:text-xl mb-3">
-                    3. 선호하는 근무 형태를 입력해주세요
-                  </div>
-                  <select
-                    value={workType}
-                    onChange={(e) => setWorkType(e.target.value)}
-                    className="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-90"
-                    name="workType"
-                    id="workType"
-                    disabled={isGenerating}
-                  >
-                    <option value="">선호 근무 형태를 선택해주세요</option>
-                    <option value="풀타임">풀타임</option>
-                    <option value="파트타임">파트타임</option>
-                  </select>
-                </div>
-              </div>
-            </div> */}
             {isGenerating ? (
               <div role="status" className="mt-10 flex justify-center">
                 <svg

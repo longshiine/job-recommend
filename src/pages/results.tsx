@@ -27,7 +27,7 @@ export default function Results() {
           </Link>
         </div>
         <div className="flex flex-col items-center justify-center px-4 py-2">
-          <h1 className="text-3xl md:text-6xl font-extrabold">
+          <h1 className="text-4xl md:text-6xl font-bold">
             <span className="">시어</span>, AI 직무 추천
             <span className="bg-seer text-white text-xs md:text-lg font-medium ml-3 mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
               Beta

@@ -5,7 +5,7 @@ module.exports = {
     colors: {
       seer: "#03045a",
       white: "#FFFFFF",
-      gray: "#e2e2e2",
+      gray: "#F2F2F2",
     },
     extend: {},
   },
