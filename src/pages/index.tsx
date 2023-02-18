@@ -5,11 +5,11 @@ export default function Home() {
   return (
     <>
       <PageHead />
-      <main className="flex flex-col items-center justify-center min-h-screen py-2">
+      <main className="flex flex-col items-center justify-center min-h-screen py-2 mt-10">
         <div className="flex flex-col items-center justify-center px-4 py-2">
-          <h1 className="text-4xl md:text-6xl font-bold">
+          <h1 className="text-3xl md:text-6xl font-bold">
             시어, AI 직무 추천 (Beta)
-            <span className="text-4xl md:text-6xl font-bold text-sky-400">
+            <span className="text-3xl md:text-6xl font-bold text-sky-400">
               .
             </span>
           </h1>

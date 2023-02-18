@@ -32,7 +32,7 @@ export default function CareerInput() {
       });
       setIsGenerating(false);
       const data = await res.json();
-      if (data.jobRecommendation) {
+      if (data?.jobRecommendation) {
         const jobRecommendation = data.jobRecommendation.trim().split("\n");
         router.push({
           pathname: "/results",
@@ -51,58 +51,78 @@ export default function CareerInput() {
   };
 
   return (
-    <div className="max-w-sm w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 md:max-w-2xl ">
+    <div className="max-w-sm w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-12 md:max-w-2xl ">
       <div className="grid gap-y-12">
         <div className="">
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className="flex flex-col">
-              <p className="mt-2 text-sm md:text-xl text-gray-700">
-                1. 이전 경력을 입력해주세요.
-              </p>
-              <textarea
-                rows={7}
-                value={prevCareer}
-                onChange={(e) => {
-                  setPrevCareer(e.target.value);
-                }}
-                name="prevCareer"
-                id="prevCareer"
-                placeholder="ex) 경리 일을 했다 or 인사담당자 업무를 20년 동안 했다"
-                className="block w-full rounded-md bg-white border border-gray-400 shadow-sm focus:border-sky-400 focus:ring-sky-400 sm:text-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
-              />
+              <div className="rounded-lg overflow-hidden shadow-md ">
+                <div className="px-6 py-4">
+                  <div className="font-bold text-lg md:text-xl mb-3">
+                    1. 이전 경력을 입력해주세요
+                  </div>
+                  <textarea
+                    rows={7}
+                    value={prevCareer}
+                    onChange={(e) => {
+                      setPrevCareer(e.target.value);
+                    }}
+                    name="prevCareer"
+                    id="prevCareer"
+                    placeholder="이전 경력 사항을 자유롭게 입력해주세요"
+                    className="block w-full rounded-md border border-gray-200 shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
+                  />
+                </div>
+                <div className="px-6 pb-2 mb-2">
+                  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                    ex1) 경리 일을 했다
+                  </span>
+                  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                    ex2) 인사담당자 업무를 20년 동안 했다
+                  </span>
+                </div>
+              </div>
             </div>
             <div className="flex flex-col">
-              <p className="mt-2 text-sm md:text-xl text-gray-700">
-                2. 선호하는 직무 형태를 입력해주세요.
-              </p>
-              <select
-                value={careerType}
-                onChange={(e) => setCareerType(e.target.value)}
-                className="block w-full rounded-md bg-white border border-gray-400 shadow-sm focus:border-sky-400 focus:ring-sky-400 sm:text-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
-                name="careerType"
-                id="careerType"
-              >
-                <option value="">선호 직무 형태를 선택해주세요</option>
-                <option value="연봉이 높은">연봉이 높은</option>
-                <option value="워라밸이 좋은">워라밸이 좋은</option>
-                <option value="단순 작업이 많은">단순 작업이 많은</option>
-              </select>
+              <div className="rounded-lg overflow-hidden shadow-md mt-10">
+                <div className="px-6 py-4">
+                  <div className="font-bold text-lg md:text-xl mb-3">
+                    2. 선호하는 직무 형태를 입력해주세요.
+                  </div>
+                  <select
+                    value={careerType}
+                    onChange={(e) => setCareerType(e.target.value)}
+                    className="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
+                    name="careerType"
+                    id="careerType"
+                  >
+                    <option value="">선호 직무 형태를 선택해주세요</option>
+                    <option value="연봉이 높은">연봉이 높은</option>
+                    <option value="워라밸이 좋은">워라밸이 좋은</option>
+                    <option value="단순 작업이 많은">단순 작업이 많은</option>
+                  </select>
+                </div>
+              </div>
             </div>
             <div className="flex flex-col">
-              <p className="mt-2 text-sm md:text-xl text-gray-700">
-                3. 선호하는 근무 형태를 입력해주세요
-              </p>
-              <select
-                value={workType}
-                onChange={(e) => setWorkType(e.target.value)}
-                className="block w-full rounded-md bg-white border border-gray-400 shadow-sm focus:border-sky-400 focus:ring-sky-400 sm:text-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-900"
-                name="workType"
-                id="workType"
-              >
-                <option value="">선호 근무 형태를 선택해주세요</option>
-                <option value="풀타임">풀타임</option>
-                <option value="파트타임">파트타임</option>
-              </select>
+              <div className="rounded-lg overflow-hidden shadow-md mt-10">
+                <div className="px-6 py-4">
+                  <div className="font-bold text-lg md:text-xl mb-3">
+                    3. 선호하는 근무 형태를 입력해주세요
+                  </div>
+                  <select
+                    value={workType}
+                    onChange={(e) => setWorkType(e.target.value)}
+                    className="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 placeholder-gray-500 my-2 text-gray-90"
+                    name="workType"
+                    id="workType"
+                  >
+                    <option value="">선호 근무 형태를 선택해주세요</option>
+                    <option value="풀타임">풀타임</option>
+                    <option value="파트타임">파트타임</option>
+                  </select>
+                </div>
+              </div>
             </div>
             {isGenerating ? (
               <div role="status" className="mt-10 flex justify-center">
@@ -128,7 +148,7 @@ export default function CareerInput() {
               </div>
             ) : (
               <button
-                className={`bg-sky-400 w-full hover:bg-sky-500 text-white font-bold mt-6 py-2 px-4 rounded
+                className={`bg-sky-400 w-full hover:bg-sky-500 text-white font-bold mt-10 py-2 px-4 rounded
                 ${
                   isGenerating || prevCareer === ""
                     ? "cursor-not-allowed opacity-50"

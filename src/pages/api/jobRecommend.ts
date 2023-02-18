@@ -29,8 +29,11 @@ const generateRecommendation = async ({
       }
     );
     const data = await response.json();
-    console.log(data);
-    return data.choices[0].text;
+    if (data) {
+      return data.choices[0].text;
+    } else {
+      return null;
+    }
   } catch (err) {
     console.error(err);
     throw err;
