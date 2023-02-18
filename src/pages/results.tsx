@@ -14,22 +14,18 @@ export default function Results() {
       <PageHead />
       <main className="flex flex-col items-center justify-center min-h-screen">
         <div className="flex items-center space-x-2 max-w-sm w-full mx-auto px-4 sm:px-6 lg:px-8 mt-4 md:mt-12 md:max-w-2xl">
-          <img
-            className="w-auto h-5 md:h-8"
-            src="https://storage.googleapis.com/mixo-files/logos/reLife-1676040768449.svg"
-            alt="Seer logo"
-          />
-          <Link
-            href="https://www.mixo.io/site/seer-suvmu/index.html"
-            className="font-sans text-lg md:text-xl font-bold text-gray-900"
-          >
-            Seer
+          <Link href="https://www.mixo.io/site/seer-suvmu/index.html">
+            <img
+              className="w-auto h-10 md:h-20"
+              src="/logo.png"
+              alt="Seer logo"
+            />
           </Link>
         </div>
         <div className="flex flex-col items-center justify-center px-4 py-2">
           <h1 className="text-4xl md:text-6xl font-bold">
             <span className="">시어</span>, AI 직무 추천
-            <span className="bg-seer text-white text-xs md:text-lg font-medium ml-3 mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+            <span className="bg-purple text-white text-xs md:text-lg font-medium ml-3 mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
               Beta
             </span>
           </h1>
@@ -38,14 +34,14 @@ export default function Results() {
           <div className="grid gap-y-12">
             <div className="flex flex-col mt-5 relative">
               <div className="font-bold-600 text-lg mb-3 absolute -top-5">
-                <span className="bg-seer font-bold text-white px-4 py-2.5 rounded-full">
+                <span className="bg-purple font-bold text-white px-4 py-2.5 rounded-full">
                   1
                 </span>
-                <span className="bg-seer font-semibold text-white px-3 py-1.5 rounded-r-lg -ml-3">
+                <span className="bg-purple font-semibold text-white px-3 py-1.5 rounded-r-lg -ml-3">
                   {job1[0].split(".")[1]}
                 </span>
               </div>
-              <div className="rounded-lg overflow-hidden ml-3 shadow-md border border-seer">
+              <div className="rounded-lg overflow-hidden ml-3 shadow-md border border-purple">
                 <div className="px-6 py-4">
                   <p className="text-gray-700 text-base font-bold">{job1[1]}</p>
                 </div>
@@ -53,14 +49,14 @@ export default function Results() {
             </div>
             <div className="flex flex-col mt-5 relative">
               <div className="font-bold-600 text-lg mb-3 absolute -top-5">
-                <span className="bg-seer font-bold text-white px-4 py-2.5 rounded-full">
+                <span className="bg-purple font-bold text-white px-4 py-2.5 rounded-full">
                   2
                 </span>
-                <span className="bg-seer font-semibold text-white px-3 py-1.5 rounded-r-lg -ml-3">
+                <span className="bg-purple font-semibold text-white px-3 py-1.5 rounded-r-lg -ml-3">
                   {job2[0].split(".")[1]}
                 </span>
               </div>
-              <div className="rounded-lg overflow-hidden ml-3 shadow-md border border-seer">
+              <div className="rounded-lg overflow-hidden ml-3 shadow-md border border-purple">
                 <div className="px-6 py-4">
                   <p className="text-gray-700 text-base font-bold">{job2[1]}</p>
                 </div>
@@ -68,14 +64,14 @@ export default function Results() {
             </div>
             <div className="flex flex-col mt-5 relative">
               <div className="font-bold-600 text-lg mb-3 absolute -top-5">
-                <span className="bg-seer font-bold text-white px-4 py-2.5 rounded-full">
+                <span className="bg-purple font-bold text-white px-4 py-2.5 rounded-full">
                   3
                 </span>
-                <span className="bg-seer font-semibold text-white px-3 py-1.5 rounded-r-lg -ml-3">
+                <span className="bg-purple font-semibold text-white px-3 py-1.5 rounded-r-lg -ml-3">
                   {job3[0].split(".")[1]}
                 </span>
               </div>
-              <div className="rounded-lg overflow-hidden ml-3 shadow-md border border-seer">
+              <div className="rounded-lg overflow-hidden ml-3 shadow-md border border-purple">
                 <div className="px-6 py-4">
                   <p className="text-gray-700 text-base font-bold">{job3[1]}</p>
                 </div>
@@ -84,7 +80,7 @@ export default function Results() {
             <div className="flex justify-center">
               <Link
                 href="https://www.mixo.io/site/seer-suvmu/index.html#"
-                className=" bg-seer hover:bg-seer text-white font-bold py-2 px-4 rounded flex justify-center max-w-md"
+                className=" bg-purple hover:bg-purple text-white font-bold py-2 px-4 rounded flex justify-center max-w-md"
               >
                 관련 일자리 보러가기
               </Link>

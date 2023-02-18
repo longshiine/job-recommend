@@ -57,14 +57,14 @@ export default function CareerInput() {
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className="flex flex-col relative mt-10">
               <div className="text-lg mb-3 absolute -top-5">
-                <span className="bg-seer font-bold text-white px-4 py-2.5 rounded-full">
+                <span className="bg-purple font-bold text-white px-4 py-2.5 rounded-full">
                   1
                 </span>
-                <span className="bg-seer text-white font-semibold px-3 py-1.5 rounded-r-lg -ml-2">
+                <span className="bg-purple text-white font-semibold px-3 py-1.5 rounded-r-lg -ml-2">
                   이전 경력을 입력해주세요.
                 </span>
               </div>
-              <div className="rounded-lg overflow-hidden shadow-md border border-seer ml-3">
+              <div className="rounded-lg overflow-hidden shadow-md border border-purple ml-3">
                 <div className="px-6 py-4">
                   <textarea
                     rows={7}
@@ -91,14 +91,14 @@ export default function CareerInput() {
             </div>
             <div className="flex flex-col mt-20 relative">
               <div className="text-lg mb-3 absolute -top-5">
-                <span className="bg-seer font-bold text-white px-4 py-2.5 rounded-full">
+                <span className="bg-purple font-bold text-white px-4 py-2.5 rounded-full">
                   2
                 </span>
-                <span className="bg-seer text-white font-semibold px-3 py-1.5 rounded-r-lg -ml-2">
+                <span className="bg-purple text-white font-semibold px-3 py-1.5 rounded-r-lg -ml-2">
                   선호하는 직무 형태를 입력해주세요.
                 </span>
               </div>
-              <div className="rounded-lg overflow-hidden shadow-md border border-seer ml-3">
+              <div className="rounded-lg overflow-hidden shadow-md border border-purple ml-3">
                 <div className="px-6 py-4">
                   <select
                     value={careerType}
@@ -118,14 +118,14 @@ export default function CareerInput() {
             </div>
             <div className="flex flex-col mt-20 relative">
               <div className="text-lg mb-3 absolute -top-5">
-                <span className="bg-seer font-bold text-white px-4 py-2.5 rounded-full">
+                <span className="bg-purple font-bold text-white px-4 py-2.5 rounded-full">
                   3
                 </span>
-                <span className="bg-seer text-white font-semibold px-3 py-1.5 rounded-r-lg -ml-2">
-                  선호하는 근무 형태를 입력해주세요
+                <span className="bg-purple text-white font-semibold px-3 py-1.5 rounded-r-lg -ml-2">
+                  선호하는 근무 형태를 입력해주세요.
                 </span>
               </div>
-              <div className="rounded-lg overflow-hidden shadow-md border border-seer ml-3">
+              <div className="rounded-lg overflow-hidden shadow-md border border-purple ml-3">
                 <div className="px-6 py-4">
                   <select
                     value={workType}
@@ -146,7 +146,7 @@ export default function CareerInput() {
               <div role="status" className="mt-10 flex justify-center">
                 <svg
                   aria-hidden="true"
-                  className="w-8 h-8 mr-2 text-gray animate-spin dark:text-gray fill-seer"
+                  className="w-8 h-8 mr-2 text-gray animate-spin dark:text-gray fill-purple"
                   viewBox="0 0 100 101"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +167,7 @@ export default function CareerInput() {
             ) : (
               <div className="flex justify-center w-full">
                 <button
-                  className={`bg-seer w-xl hover:bg-sky-500 text-white font-bold mt-10 py-2 px-4 rounded
+                  className={`bg-purple w-xl hover:bg-sky-500 text-white font-bold mt-10 py-2 px-4 rounded
                 ${
                   isGenerating || prevCareer === ""
                     ? "cursor-not-allowed opacity-50"

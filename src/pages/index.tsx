@@ -1,6 +1,7 @@
 import PageHead from "@/components/PageHead";
 import CareerInput from "@/components/CareerInput";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -8,31 +9,28 @@ export default function Home() {
       <PageHead />
       <main className="flex flex-col items-center justify-center min-h-screen py-2 responsive">
         <div className="flex items-center space-x-2 max-w-sm w-full mx-auto px-4 sm:px-6 lg:px-8 mt-4 md:mt-12 md:max-w-2xl">
-          <img
-            className="w-auto h-5 md:h-8"
-            src="https://storage.googleapis.com/mixo-files/logos/reLife-1676040768449.svg"
-            alt="Seer logo"
-          />
-          <Link
-            href="https://www.mixo.io/site/seer-suvmu/index.html"
-            className="font-sans text-lg md:text-xl font-bold text-gray-900"
-          >
-            Seer
+          <Link href="https://www.mixo.io/site/seer-suvmu/index.html">
+            <img
+              className="w-auto h-10 md:h-20"
+              src="/logo.png"
+              alt="Seer logo"
+            />
           </Link>
         </div>
         <div className="flex flex-col items-center justify-center px-4 py-2 responsive">
-          <h1 className="text-4xl md:text-6xl font-bold mt-5">
+          <div className="flex w-full justify-end -mr-20"></div>
+          <h1 className="text-4xl md:text-6xl font-bold">
             <span className="">시어</span>, AI 직무 추천
-            <span className="bg-seer text-white text-xs md:text-lg font-medium ml-3 mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+            <span className="bg-purple text-white text-xs md:text-lg font-medium ml-3 mr-2 mb-20 px-2.5 py-0.5 rounded">
               Beta
             </span>
           </h1>
           <p className="mt-5 text-lg md:text-2xl">
-            <span className="text-seer font-bold">기존 경력</span>을 입력하면
+            <span className="text-purple font-bold">기존 경력</span>을 입력하면
             재취업에 적합한
           </p>
           <p className="text-lg md:text-2xl">
-            <span className="text-lg md:text-2xl font-bold text-seer">
+            <span className="text-lg md:text-2xl font-bold text-purple">
               {" "}
               맞춤 직무 3가지를{" "}
             </span>
