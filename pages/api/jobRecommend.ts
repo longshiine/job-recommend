@@ -1,9 +1,3 @@
-import { NextRequest, NextResponse } from "next/server";
-
-export const config = {
-  runtime: "edge",
-};
-
 const generateRecommendation = async ({
   prevCareer,
   careerType,

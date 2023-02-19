@@ -17,7 +17,7 @@ export default function PageHead() {
         />
         <meta
           property="og:image"
-          content="https://job-recommend.vercel.app/banner.jpeg"
+          content="https://seer-f00cd.web.app/banner.jpeg"
         />
       </Head>
     </>
