@@ -9,4 +9,5 @@ COPY . .
 RUN npm install
 
 EXPOSE 3000
-RUN npm run $MODE
+RUN npm run build
+RUN npm run start
