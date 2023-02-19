@@ -28,6 +28,7 @@ const generateRecommendation = async ({
         }),
       }
     );
+    console.log(response);
     const data = await response.json();
     if (response.status !== 200) {
       throw new Error(`Request failed with status ${response.status}`);
