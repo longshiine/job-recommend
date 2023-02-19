@@ -28,28 +28,28 @@ const generateRecommendation = async ({
         }),
       }
     );
-    console.log(response);
-    const data = await response.json();
-    if (response.status !== 200) {
-      throw new Error(`Request failed with status ${response.status}`);
-    }
-    if (data) {
-      return data.choices[0].text;
-    } else {
-      throw new Error(`Request failed with status ${response.status}`);
+    if (response.ok) {
+      const data = await response.json();
+      if (data) {
+        return data.choices[0].text;
+      } else {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
     }
   } catch (err) {
+    console.log(err);
     throw err;
   }
 };
 
 export default async function handler(req: any, res: any) {
-  const { prevCareer, careerType } = req.body;
+  const { prevCareer, careerType, workType } = req.body;
 
   try {
     const jobRecommendation = await generateRecommendation({
       prevCareer,
       careerType,
+      workType,
     });
     res.status(200).json({
       jobRecommendation,

@@ -31,18 +31,21 @@ export default function CareerInput() {
         }),
       });
       setIsGenerating(false);
-      console.log(res);
-      const data = await res.json();
-      if (data?.jobRecommendation) {
-        const jobRecommendation = data.jobRecommendation.trim().split("\n");
-        router.push({
-          pathname: "/results",
-          query: {
-            job1: String(jobRecommendation[0]),
-            job2: String(jobRecommendation[2]),
-            job3: String(jobRecommendation[4]),
-          },
-        });
+      if (res.status === 200) {
+        const data = await res.json();
+        if (data?.jobRecommendation) {
+          const jobRecommendation = data.jobRecommendation.trim().split("\n");
+          router.push({
+            pathname: "/results",
+            query: {
+              job1: String(jobRecommendation[0]),
+              job2: String(jobRecommendation[2]),
+              job3: String(jobRecommendation[4]),
+            },
+          });
+        } else {
+          alert("접속량이 많습니다. 잠시 뒤 다시 시도해주세요.");
+        }
       } else {
         alert("접속량이 많습니다. 잠시 뒤 다시 시도해주세요.");
       }
