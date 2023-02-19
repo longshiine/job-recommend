@@ -46,6 +46,7 @@ export default function CareerInput() {
         alert("접속량이 많습니다. 잠시 뒤 다시 시도해주세요.");
       }
     } catch (err) {
+      alert("접속량이 많습니다. 잠시 뒤 다시 시도해주세요.");
       throw err;
     }
   };

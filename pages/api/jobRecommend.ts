@@ -35,10 +35,9 @@ const generateRecommendation = async ({
     if (data) {
       return data.choices[0].text;
     } else {
-      return null;
+      throw new Error(`Request failed with status ${response.status}`);
     }
   } catch (err) {
-    console.error(err);
     throw err;
   }
 };
@@ -55,8 +54,6 @@ export default async function handler(req: any, res: any) {
       jobRecommendation,
     });
   } catch (err) {
-    res.status(500).json({
-      message: err,
-    });
+    throw err;
   }
 }
