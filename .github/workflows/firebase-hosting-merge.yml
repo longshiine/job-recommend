@@ -6,6 +6,9 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - main
+env:
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest

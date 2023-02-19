@@ -31,6 +31,7 @@ export default function CareerInput() {
         }),
       });
       setIsGenerating(false);
+      console.log(res);
       const data = await res.json();
       if (data?.jobRecommendation) {
         const jobRecommendation = data.jobRecommendation.trim().split("\n");
