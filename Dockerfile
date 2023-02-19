@@ -1,12 +1,12 @@
-FROM node
+FROM node:16
 
 ARG MODE
 ENV MODE=${MODE}
 ADD . $MODE
 WORKDIR /app
 
-COPY ./ ./
+COPY ./src ./
 RUN npm install
 
 EXPOSE 3000
-ENTRYPOINT npm run $MODE
+RUN npm run $MODE

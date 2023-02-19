@@ -21,16 +21,16 @@ export default function Home() {
           <div className="flex w-full justify-end -mr-20"></div>
           <h1 className="text-4xl md:text-6xl font-bold">
             <span className="">시어</span>, AI 직무 추천
-            <span className="bg-purple text-white text-xs md:text-lg font-medium ml-3 mr-2 mb-20 px-2.5 py-0.5 rounded">
+            <span className="bg-seer text-white text-xs md:text-lg font-medium ml-3 mr-2 mb-20 px-2.5 py-0.5 rounded">
               Beta
             </span>
           </h1>
           <p className="mt-5 text-lg md:text-2xl">
-            <span className="text-purple font-bold">기존 경력</span>을 입력하면
+            <span className="text-seer font-bold">기존 경력</span>을 입력하면
             재취업에 적합한
           </p>
           <p className="text-lg md:text-2xl">
-            <span className="text-lg md:text-2xl font-bold text-purple">
+            <span className="text-lg md:text-2xl font-bold text-seer">
               {" "}
               맞춤 직무 3가지를{" "}
             </span>
