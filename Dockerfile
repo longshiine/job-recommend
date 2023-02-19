@@ -5,7 +5,7 @@ ENV MODE=${MODE}
 ADD . $MODE
 WORKDIR /app
 
-COPY ./src ./
+COPY . .
 RUN npm install
 
 EXPOSE 3000
