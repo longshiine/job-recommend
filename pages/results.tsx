@@ -45,6 +45,14 @@ export default function Results() {
                 <div className="px-6 py-4">
                   <p className="text-gray-700 text-base font-bold">{job1[1]}</p>
                 </div>
+                <div className="flex justify-end">
+                  <Link
+                    href="https://www.mixo.io/site/seer-suvmu/index.html#"
+                    className=" text-seer font-bold py-2 px-4 rounded flex justify-center max-w-md"
+                  >
+                    관련 일자리 보러가기 👉
+                  </Link>
+                </div>
               </div>
             </div>
             <div className="flex flex-col mt-5 relative">
@@ -59,6 +67,14 @@ export default function Results() {
               <div className="rounded-lg overflow-hidden ml-3 shadow-md border border-seer">
                 <div className="px-6 py-4">
                   <p className="text-gray-700 text-base font-bold">{job2[1]}</p>
+                </div>
+                <div className="flex justify-end">
+                  <Link
+                    href="https://www.mixo.io/site/seer-suvmu/index.html#"
+                    className=" text-seer font-bold py-2 px-4 rounded flex justify-center max-w-md"
+                  >
+                    관련 일자리 보러가기 👉
+                  </Link>
                 </div>
               </div>
             </div>
@@ -75,14 +91,22 @@ export default function Results() {
                 <div className="px-6 py-4">
                   <p className="text-gray-700 text-base font-bold">{job3[1]}</p>
                 </div>
+                <div className="flex justify-end">
+                  <Link
+                    href="https://www.mixo.io/site/seer-suvmu/index.html#"
+                    className=" text-seer font-bold py-2 px-4 rounded flex justify-center max-w-md"
+                  >
+                    관련 일자리 보러가기 👉
+                  </Link>
+                </div>
               </div>
             </div>
             <div className="flex justify-center">
               <Link
-                href="https://www.mixo.io/site/seer-suvmu/index.html#"
+                href="/"
                 className=" bg-seer hover:bg-seer text-white font-bold py-2 px-4 rounded flex justify-center max-w-md"
               >
-                관련 일자리 보러가기
+                다시 추천 받기
               </Link>
             </div>
           </div>
