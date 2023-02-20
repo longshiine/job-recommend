@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import { database } from "@/firebaseConfig";
+import { collection, addDoc } from "firebase/firestore";
 
 export default function CareerInput() {
   const router = useRouter();
@@ -35,6 +37,17 @@ export default function CareerInput() {
         const data = await res.json();
         if (data?.jobRecommendation) {
           const jobRecommendation = data.jobRecommendation.trim().split("\n");
+          const firebaseResponse = await addDoc(
+            collection(database, "career_finished"),
+            {
+              prevCareer,
+              careerType,
+              workType,
+              job1: jobRecommendation[0],
+              job2: jobRecommendation[2],
+              job3: jobRecommendation[4],
+            }
+          );
           router.push({
             pathname: "/results",
             query: {

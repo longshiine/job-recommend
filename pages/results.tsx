@@ -14,7 +14,7 @@ export default function Results() {
       <PageHead />
       <main className="flex flex-col items-center justify-center min-h-screen">
         <div className="flex items-center space-x-2 max-w-sm w-full mx-auto px-4 sm:px-6 lg:px-8 mt-4 md:mt-12 md:max-w-2xl">
-          <Link href="https://www.mixo.io/site/seer-suvmu/index.html">
+          <Link href="https://seer.mixo.io/">
             <img
               className="w-auto h-10 md:h-20"
               src="/logo.png"
@@ -47,7 +47,7 @@ export default function Results() {
                 </div>
                 <div className="flex justify-end">
                   <Link
-                    href="https://www.mixo.io/site/seer-suvmu/index.html#"
+                    href="https://seer.mixo.io/"
                     className=" text-seer font-bold py-2 px-4 rounded flex justify-center max-w-md"
                   >
                     관련 일자리 보러가기 👉
@@ -70,7 +70,7 @@ export default function Results() {
                 </div>
                 <div className="flex justify-end">
                   <Link
-                    href="https://www.mixo.io/site/seer-suvmu/index.html#"
+                    href="https://seer.mixo.io/"
                     className=" text-seer font-bold py-2 px-4 rounded flex justify-center max-w-md"
                   >
                     관련 일자리 보러가기 👉
@@ -93,7 +93,7 @@ export default function Results() {
                 </div>
                 <div className="flex justify-end">
                   <Link
-                    href="https://www.mixo.io/site/seer-suvmu/index.html#"
+                    href="https://seer.mixo.io/"
                     className=" text-seer font-bold py-2 px-4 rounded flex justify-center max-w-md"
                   >
                     관련 일자리 보러가기 👉
