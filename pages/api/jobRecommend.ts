@@ -30,7 +30,7 @@ const generateRecommendation = async ({
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          Authorization: `Bearer ${process.env.NEXT_OPENAI_API_KEY}`,
         },
         body: JSON.stringify({
           prompt: `나는 새로운 일을 찾고 있어. 다음과 같은 요소를 만족하는 직무 3가지를 이유와 함께 추천해줄래?
