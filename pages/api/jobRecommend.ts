@@ -1,3 +1,13 @@
+import { database } from "@/firebaseConfig";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  orderBy,
+  addDoc,
+} from "firebase/firestore";
+
 const generateRecommendation = async ({
   prevCareer,
   careerType,
@@ -8,6 +18,12 @@ const generateRecommendation = async ({
   workType?: string;
 }) => {
   try {
+    const firebaseResponse = await addDoc(collection(database, "career"), {
+      prevCareer,
+      careerType,
+      workType,
+    });
+    console.log(firebaseResponse);
     const response = await fetch(
       "https://api.openai.com/v1/engines/text-davinci-003/completions",
       {
@@ -29,7 +45,6 @@ const generateRecommendation = async ({
       }
     );
     if (response.ok) {
-      console.log(response);
       const data = await response.json();
       if (data) {
         return data.choices[0].text;
